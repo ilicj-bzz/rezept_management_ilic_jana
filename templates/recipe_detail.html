@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ recipe.name }}</title>
+</head>
+<body>
+<h1>{{ recipe.name }}</h1>
+<h2>Zutaten</h2>
+<ul>
+    {% for ingredient in recipe.ingredients %}
+    <li>{{ ingredient }}</li>
+    {% endfor %}
+</ul>
+<h2>Zubereitung</h2>
+<ol>
+    {% for instruction in recipe.instructions %}
+    <li>{{ instruction }}</li>
+    {% endfor %}
+</ol>
+<a type="button" class="btn btn-primary" href="{{ url_for('edit_recipe', recipe_id=recipe.id) }}">Rezept bearbeiten</a>
+<br>
+<a href="{{ url_for('index') }}">Zurück zur Startseite</a>
+</body>
+</html>

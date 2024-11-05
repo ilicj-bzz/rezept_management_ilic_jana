@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.exceptions import BadRequestKeyError
 
+from functional_utils import sort_recipes
 from models import Recipe
-from functional_utils import apply_filters, sort_recipes
 
 app = Flask(__name__)
 
@@ -50,7 +50,8 @@ def add_recipe():
         get_form_field = lambda field: request.form.get(field, '').strip()
 
         name = get_form_field('name')
-        ingredients = list(filter(lambda x: x, get_form_field('ingredients').split(','))) # B3F: Lambda-Ausdruck mit mehreren Argumenten
+        ingredients = list(filter(lambda x: x, get_form_field('ingredients').split(
+            ',')))  # B3F: Lambda-Ausdruck mit mehreren Argumenten
         instructions = list(filter(lambda x: x, get_form_field('instructions').split(',')))
 
         if name and ingredients and instructions:
@@ -131,11 +132,6 @@ def recipe_detail(recipe_id):
             raise IndexError
     except IndexError:
         return render_template('error.html', message="Ungültige Rezept-ID")
-
-
-@app.errorhandler(BadRequestKeyError)
-def handle_bad_request(e):
-    return 'Bad request!', 400
 
 
 if __name__ == '__main__':

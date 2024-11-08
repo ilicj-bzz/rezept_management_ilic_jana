@@ -10,7 +10,7 @@
 <div class="container">
     <h1>Rezepte</h1>
     <form class="mb-3" action="{{ url_for('filter_recipes') }}" method="POST">
-        <input type="text" name="ingredient" class="form-control" placeholder="Zutat suchen">
+        <input type="text" name="ingredient" class="form-control" placeholder="Zutat/Rezept suchen">
         <button type="submit" class="btn btn-primary">Filtern</button>
     </form>
     <ul class="list-group">

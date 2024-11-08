@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-from werkzeug.exceptions import BadRequestKeyError
 
 from functional_utils import sort_recipes
 from models import Recipe

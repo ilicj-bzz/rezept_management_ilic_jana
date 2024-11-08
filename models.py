@@ -1,5 +1,5 @@
 class Recipe:
-    #A1F Immutable (String), Mutable (List)
+    # A1F Immutable (String), Mutable (List)
     # A1E: Beispiel für OOP-Ansatz.
     def __init__(self, id, name, ingredients, instructions):
         self.id = id
